@@ -27,11 +27,11 @@
                 </a>
                 <div class="flex items-center gap-3">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="inline-flex items-center px-4 py-2 rounded-lg bg-amber-500 text-slate-900 font-medium hover:bg-amber-400 transition-colors">
+                        <a href="{{ route('dashboard') }}" class="inline-flex items-center px-4 py-2 rounded-lg bg-amber-500 text-slate-900 font-medium hover:bg-amber-400 transition-colors">
                             Dashboard
                         </a>
                     @else
-                        <a href="" class="inline-flex items-center px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors">
+                        <a href="{{ route('login') }}" class="inline-flex items-center px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors">
                             Masuk
                         </a>
                         @if (Route::has('register'))
@@ -64,14 +64,14 @@
                 </p>
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                     @auth
-                        <a href="" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl bg-amber-500 text-slate-900 font-semibold hover:bg-amber-400 transition-all shadow-lg shadow-amber-500/25">
+                        <a href="{{ route('dashboard') }}" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl bg-amber-500 text-slate-900 font-semibold hover:bg-amber-400 transition-all shadow-lg shadow-amber-500/25">
                             Buka Dashboard
                         </a>
                     @else
-                        <a href="" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl bg-amber-500 text-slate-900 font-semibold hover:bg-amber-400 transition-all shadow-lg shadow-amber-500/25">
+                        <a href="{{ route('register') }}" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl bg-amber-500 text-slate-900 font-semibold hover:bg-amber-400 transition-all shadow-lg shadow-amber-500/25">
                             Daftar Gratis
                         </a>
-                        <a href="" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl border border-slate-600 text-slate-300 hover:border-slate-500 hover:bg-slate-800/50 transition-all">
+                        <a href="{{ route('login') }}" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl border border-slate-600 text-slate-300 hover:border-slate-500 hover:bg-slate-800/50 transition-all">
                             Masuk
                         </a>
                     @endauth
@@ -165,9 +165,9 @@
                 <nav class="flex items-center gap-6" aria-label="Footer">
                     <a href="{{ url('/') }}" class="text-slate-400 hover:text-white text-sm transition-colors">Beranda</a>
                     @auth
-                        <a href="" class="text-slate-400 hover:text-white text-sm transition-colors">Dashboard</a>
+                        <a href="{{ route('dashboard') }}" class="text-slate-400 hover:text-white text-sm transition-colors">Dashboard</a>
                     @else
-                        <a href="" class="text-slate-400 hover:text-white text-sm transition-colors">Masuk</a>
+                        <a href="{{ route('login') }}" class="text-slate-400 hover:text-white text-sm transition-colors">Masuk</a>
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors">Daftar</a>
                         @endif
