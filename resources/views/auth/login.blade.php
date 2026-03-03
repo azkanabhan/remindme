@@ -16,41 +16,41 @@
             </h1>
         </header>
 
-        <article class="p-6 sm:p-8 rounded-2xl bg-slate-800/50 border border-slate-700/50 shadow-xl">
+        <x-auth.card>
             <form action="{{ route('login') }}" method="POST" class="space-y-6" aria-label="Form masuk">
                 @csrf
 
                 @if ($errors->any())
-                    <div class="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400" role="alert" aria-live="polite">
-                        <p class="font-medium mb-2">Terdapat kesalahan:</p>
-                        <ul class="list-disc list-inside text-sm space-y-1">
+                    <x-ui.alert type="error" title="Terdapat kesalahan:">
+                        <ul class="list-disc list-inside space-y-1">
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
-                    </div>
+                    </x-ui.alert>
                 @endif
 
                 <div class="space-y-4">
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Email</label>
-                        <input id="email" name="email" type="email" autocomplete="email" required
-                            class="block w-full px-4 py-3 rounded-xl bg-slate-900/70 border border-slate-600 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50 transition-colors sm:text-sm @error('email') border-red-500/50 @enderror"
-                            placeholder="nama@contoh.com" value="{{ old('email') }}">
-                        @error('email')
-                            <p class="mt-2 text-sm text-red-400" role="alert">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    <x-ui.input
+                        id="email"
+                        name="email"
+                        type="email"
+                        label="Email"
+                        autocomplete="email"
+                        placeholder="nama@contoh.com"
+                        :error="$errors->first('email')"
+                        value="{{ old('email') }}"
+                    />
 
-                    <div>
-                        <label for="password" class="block text-sm font-medium text-slate-300 mb-2">Password</label>
-                        <input id="password" name="password" type="password" autocomplete="current-password" required
-                            class="block w-full px-4 py-3 rounded-xl bg-slate-900/70 border border-slate-600 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50 transition-colors sm:text-sm @error('password') border-red-500/50 @enderror"
-                            placeholder="••••••••">
-                        @error('password')
-                            <p class="mt-2 text-sm text-red-400" role="alert">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    <x-ui.input
+                        id="password"
+                        name="password"
+                        type="password"
+                        label="Password"
+                        autocomplete="current-password"
+                        placeholder="••••••••"
+                        :error="$errors->first('password')"
+                    />
                 </div>
 
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -66,10 +66,9 @@
                     </a>
                 </div>
 
-                <button type="submit"
-                    class="w-full inline-flex justify-center items-center px-6 py-3 rounded-xl bg-amber-500 text-slate-900 font-semibold hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-amber-500 transition-all shadow-lg shadow-amber-500/25">
+                <x-ui.button type="submit" class="w-full">
                     Masuk
-                </button>
+                </x-ui.button>
             </form>
 
             <p class="mt-6 text-center text-sm text-slate-400">
@@ -78,7 +77,7 @@
                     Daftar sekarang
                 </a>
             </p>
-        </article>
+        </x-auth.card>
     </div>
 </section>
 @endsection

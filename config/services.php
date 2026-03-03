@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'fcm' => [
+        'server_key' => env('FIREBASE_SERVER_KEY'),
+        'endpoint' => env('FIREBASE_FCM_ENDPOINT', 'https://fcm.googleapis.com/fcm/send'),
+    ],
+
 ];
